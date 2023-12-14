@@ -1,0 +1,7 @@
+.*
+_*
+test.*
+Rimpe/
+
+!.vscode
+!.gitignore
