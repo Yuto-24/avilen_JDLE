@@ -5,6 +5,8 @@ mnist_*
 *MNIST
 data/
 提出/
+*.pkl
+*.model
 
 # 例外含有ファイル
 !.gitignore

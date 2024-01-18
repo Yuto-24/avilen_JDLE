@@ -7,6 +7,7 @@ from os.path import dirname, abspath, join
 dir_path = dirname(abspath("__file__"))
 code_path = join(dir_path, "3_コーディング演習")
 copy_path = join(dir_path, "3_コーディング演習", "提出")
+compile_path = join(dir_path, "3_コーディング演習", "complete")
 
 files = os.listdir(code_path)
 files.sort()
@@ -15,7 +16,9 @@ files = list(filter(lambda x: "コーディング演習" in x and ".ipynb" in x,
 
 def get_new_filepath(input_str: str):
     # copy 先 dir にあり、 Chapter[input_num] におけるファイル一覧を取得
-    copy_dir_files = list(filter(lambda x: f"コーディング演習Chapter{input_str}" in x, os.listdir(copy_path)))
+    copy_dir_files = list(
+        filter(lambda x: f"コーディング演習Chapter{input_str}" in x, os.listdir(copy_path))
+    )
     copy_dir_files.sort()
 
     # 上記で取得したファイル数
@@ -27,7 +30,10 @@ def get_new_filepath(input_str: str):
     else:
         # ファイル数が 1 以上の場合
         last_file = copy_dir_files[len(copy_dir_files) - 1]
-        file_num = format(float(last_file.split("_")[1].split("v")[1].replace(".ipynb", "")) + 0.1, ".1f")
+        file_num = format(
+            float(last_file.split("_")[1].split("v")[1].replace(".ipynb", "")) + 0.1,
+            ".1f",
+        )
 
     # コピー先ファイルパスを設定
     new_filename = f"コーディング演習Chapter{input_str}（植松悠杜）_v{file_num}.ipynb"
@@ -40,7 +46,7 @@ def main(input_str: str, is_complete: bool = False):
 
     # input_str が一桁の時、0詰め
     if len(str_num) == 1:
-        str_num = '0' + str_num
+        str_num = "0" + str_num
 
     original_filepath = join(code_path, f"コーディング演習Chapter{str_num}.ipynb")
 
@@ -48,7 +54,7 @@ def main(input_str: str, is_complete: bool = False):
         new_filepath = get_new_filepath(str_num)
     else:
         new_filename = f"コーディング演習Chapter{str_num}（植松悠杜）_v1.0.ipynb"
-        new_filepath = join(copy_path, new_filename)
+        new_filepath = join(compile_path, new_filename)
 
     print(f"copy from and to\n\t{original_filepath}\n\t{new_filepath}")
     copy(original_filepath, new_filepath)
