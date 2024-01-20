@@ -1,0 +1,12 @@
+# 除外ファイル
+.*
+_*
+mnist_*
+*MNIST
+data/
+*.pkl
+*.model
+
+# 例外含有ファイル
+!.gitignore
+!.vscode
