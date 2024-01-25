@@ -46,7 +46,11 @@ RUN echo "alias ll='ls -al'" >> ~/.bashrc && \
     echo "source ~/.bashrc" > ~/.bash_profile
 
 # コンテナログイン時のディレクトリ指定
-WORKDIR /jupyter/src
+WORKDIR /projects/
+
+ADD ./run.sh /run.sh
+RUN chmod +x /run.sh \
+    && export LC_ALL=C.UTF-8
 
 ADD ./run.sh /root/run.sh
 RUN chmod +x /root/run.sh

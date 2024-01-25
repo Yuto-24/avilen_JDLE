@@ -1,7 +1,13 @@
+# 除外ファイル
 .*
 _*
-test.*
-Rimpe/
+mnist_*
+*MNIST
+data/
+提出/
+*.pkl
+*.model
 
-!.vscode
+# 例外含有ファイル
 !.gitignore
+!.vscode
